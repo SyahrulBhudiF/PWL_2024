@@ -1,14 +1,16 @@
 # Jobsheet 2 : ROUTING, CONTROLLER, dan View
 
 > Nama : Syahrul Bhudi Ferdiansyah
+
 > Kelas : TI-2F
+
 > NIM : 2241720167
 
 ## Basic Routing
 
 -   Route /hello<br>
     ![alt text](./public/screenshot/image1.png)<br>
-    Hasil  <br>
+    Hasil <br>
     ![alt text](./public/screenshot/image-1.png)<br>
     > Disini kita melakukan Routing ke path /hello yang akan menampilkan 'Hello World'. Hal ini dikarenakan kita menulis sintaks Route laravel dengan path /hello dan mereturn nilainya secara langsung yang mana adalah 'Hello World'
 -   Route /world<br>
@@ -54,6 +56,16 @@
     ![alt text](./public/screenshot/john.png)<br>
     Hasil<br>
     ![alt text](./public/screenshot/john1.png)
-    >Hasil dari pengubahan tersebut adalah nilai default dari parameter name berubah menjadi John. Jadi ketika url parameter dikosongi maka callback akan langsung meneruskan $name sebagai john
-- Route Name
+    > Hasil dari pengubahan tersebut adalah nilai default dari parameter name berubah menjadi John. Jadi ketika url parameter dikosongi maka callback akan langsung meneruskan $name sebagai john
+-   Route Name<br> >note : hasil screenshot berbeda karena saya berpinda os dari windows ke linux
+    ![alt text](./public/screenshot/nama.png)<br>
+    Hasil
+    ![alt text](./public/screenshot/nama2.png)
+    > Langkah diatas, merupakan code yang kurang benar pada laravel untuk
+    > memakai route name, karna route name di pakai untuk mensederhanakan url yang dikira
+    > Panjang untuk digunakan redirect atau untuk dipakai di fungsi route lain, berikut merupakan
+    > contoh kode yang benar untuk memakai route name:<br>
+    > ![alt text](./public/screenshot/cor.png)<br>
+    > ![alt text](./public/screenshot/cor1.png)<br>Seperti pada kode diatas, bila kita memanggil Url ’/test’, bukan membuka Url tersebut,
+    > melainkan kita bisa me-redirect untuk membuka Url dari route name kita seperti diatas
 

@@ -45,3 +45,11 @@ Route::get('/articles/{id}', function ($id) {
 Route::get('/user/{name?}', function ($name = 'John') {
     return 'Nama saya ' . $name;
 });
+
+Route::get('/user/profile/{name}', function ($name) {
+    return "Hello {$name}";
+})->name('profile');
+Route::get('/test', function () {
+    return to_route('profile', ['name' => 'Syahrul']);
+});
+
