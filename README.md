@@ -57,7 +57,7 @@
     Hasil<br>
     ![alt text](./public/screenshot/john1.png)
     > Hasil dari pengubahan tersebut adalah nilai default dari parameter name berubah menjadi John. Jadi ketika url parameter dikosongi maka callback akan langsung meneruskan $name sebagai john
--   Route Name<br> >note : hasil screenshot berbeda karena saya berpinda os dari windows ke linux
+-   Route Name<br> 
     ![alt text](./public/screenshot/nama.png)<br>
     Hasil
     ![alt text](./public/screenshot/nama2.png)
