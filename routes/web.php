@@ -59,7 +59,7 @@ Route::get('/test', function () {
 
 Route::get('/', [HomeController::class]);
 Route::get('/about', [AboutController::class]);
-Route::get('/articles/{$id}', [ArticleController::class]);
+Route::get('/articles/{id}', [ArticleController::class]);
 
 Route::resource('photos', PhotoController::class)->only([
     'index', 'show'

@@ -120,7 +120,11 @@ Langkah-langkah Praktikum:<br>
         - ArticleController<br>
         ![alt text](./public/screenshot/abt.png)<br>
         - Route <br>
-        ![alt text](./public/screenshot/r.png)<br>
+    ```php
+        Route::get('/', [HomeController::class]);
+        Route::get('/about', [AboutController::class]);
+        Route::get('/articles/{id}', [ArticleController::class]);
+    ```
 ## Resource Controller
 - Langkah-langkah Praktikum: <br>
     a. Create Resource Controller by terminal<br>
@@ -190,3 +194,268 @@ Langkah-langkah Praktikum:<br>
     c. Hasil<br>
     ![alt text](./public/screenshot/g2.png)
     >note: disini untuk nama dan occupation saya ganti dengan value asli dari saya. Dengan menggunakan method with, berbeda dengan memasukan nilai dengan array, sebagai alternatif untuk meneruskan array data lengkap ke fungsi view helper, kita dapat menggunakan metode with() untuk menambahkan bagian data individual ke view. Metode with() mengembalikan instance view objek sehingga kita dapat melanjutkan rangkaian metode sebelum mengembalikan tampilan
+# Tugas Praktikum
+```
+link repo : https://github.com/SyahrulBhudiF/POS
+```
+1. Controller<br>
+    a. Home Controller :
+    ```php
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class HomeController extends Controller
+    {
+        public function index(){
+            return view('home');
+        }
+    }
+    ```
+    b. Food beverage Controller :
+    ```php
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class FoodBeverageController extends Controller
+    {
+        public function index(){
+            return view('foodBeverage');
+        }
+    }
+    ```
+    c. Beuty health Controller :
+    ```php
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class BeautyHealthController extends Controller
+    {
+        public function index(){
+            return view('beautyHealth');
+        }
+    }
+    ```
+    d. Home care Controller :
+    ```php
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class HomeCareController extends Controller
+    {
+        public function index(){
+            return view('homeCare');
+        }
+    }
+    ```
+    e. Baby kid Controller :
+    ```php
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class BabyKidController extends Controller
+    {
+        public function index(){
+            return view('babyKid');
+        }
+    }
+    ```
+
+    f. User Controller :
+    ```php
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class UserController extends Controller
+    {
+        public function index($id, $name){
+            return view('user')
+                ->with('id', $id)
+                ->with('name', $name);
+        }
+    }
+    ```
+
+    g. Penjualan Controller :
+    ```php
+    <?php
+
+    namespace App\Http\Controllers;
+
+    use Illuminate\Http\Request;
+
+    class PenjualanController extends Controller
+    {
+        public function index(){
+            return view('penjualan');
+        }
+    }
+    ```
+2. View<br>
+    a. Home View :
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Home</title>
+    </head>
+    <body>
+        <h1>Welcome to Home page</h1>
+    </body>
+    </html>
+    ```
+    b. ood beverage :
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Food Beverage</title>
+    </head>
+    <body>
+        <h1>Food Beverage</h1>
+    </body>
+    </html>
+    ```
+    c. Beauty health :
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Beauty Health</title>
+    </head>
+    <body>
+        <h1>Beauty Health</h1>
+    </body>
+    </html>
+    ```
+    d. Home Care View :
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Home Care</title>
+    </head>
+    <body>
+        <h1>Home Care</h1>
+    </body>
+    </html>
+    ```
+    e. Baby kid View :
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Baby Kid</title>
+    </head>
+    <body>
+        <h1>Baby kid</h1>
+    </body>
+    </html>
+    ```
+    f. User view View :
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>User</title>
+    </head>
+    <body>
+        <h1>User id : {{$id}}</h1>
+        <h1>User name : {{$name}}</h1>
+    </body>
+    </html>
+    ```
+    g. Penjualan View :
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Penjualan</title>
+    </head>
+    <body>
+        <h1>Penjualan</h1>
+    </body>
+    </html>
+    ```
+3. Route
+```php
+/**
+ * Route for Home view
+ */
+Route::get('/', [HomeController::class, 'index']);
+
+
+/**
+ * Route prefix Category
+ */
+Route::prefix('category')->group(function(){
+    Route::get('/food-beverage', [FoodBeverageController::class, 'index']);
+    Route::get('/beauty-health', [BeautyHealthController::class, 'index']);
+    Route::get('/home-care', [HomeCareController::class, 'index']);
+    Route::get('/baby-kid', [BabyKidController::class, 'index']);
+});
+
+/**
+ * Route Params User View
+ */
+Route::get('/user/{id}/name/{name}', [UserController::class, 'index']);
+
+/**
+ * Route Penjualan
+ */
+Route::get('/penjualan', [PenjualanController::class, 'index']);
+```
+4. Hasil Running Web<br>
+a. Home :<br>
+![alt text](./public/screenshot/t1.png)<br>
+b. Food Beverage :<br>
+![alt text](./public/screenshot/f.png)<br>
+c. Beauty Health<br>
+![alt text](./public/screenshot/bh.png)<br>
+d. Home Care<br>
+![alt text](./public/screenshot/hm.png)<br>
+e. Baby Kid<br>
+![alt text](./public/screenshot/bk.png)<br>
+f. User <br>
+![alt text](./public/screenshot/u.png)<br>
+g. Penjualan<br>
+![alt text](./public/screenshot/p.png)<br>
