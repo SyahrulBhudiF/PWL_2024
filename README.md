@@ -6,8 +6,8 @@
 
 > NIM : 2241720167
 
-## Basic Routing
-
+# Basic Routing
+Langkah-langkah Praktikum:<br>
 -   Route /hello<br>
     ![alt text](./public/screenshot/image1.png)<br>
     Hasil <br>
@@ -28,7 +28,7 @@
     ![alt text](./public/screenshot/about1.png)<br>
 
 ## Route Parameters
-
+Langkah-langkah Praktikum:<br>
 -   Route /user/{name}<br>
     ![alt text](./public/screenshot/name.png)<br>
     Hasil<br>
@@ -45,7 +45,7 @@
     ![alt text](./public/screenshot/parid1.png)<br>
 
 ## Optional Parameters
-
+Langkah-langkah Praktikum:<br>
 -   Route /user/{name?}<br>
     ![alt text](./public/screenshot/opt.png)<br>
     Hasil<br>
@@ -68,8 +68,8 @@
     > ![alt text](./public/screenshot/cor.png)<br>
     > ![alt text](./public/screenshot/c.png)<br>Seperti pada kode diatas, bila kita memanggil Url ’/test’, bukan membuka Url tersebut,
     > melainkan kita bisa me-redirect untuk membuka Url dari route name kita seperti diatas
-## Controller
-- Create Controller<br>
+# Controller
+- Langkah-langkah Praktikum:<br>
     <br>a. Create Controller by terminal<br>
     ![alt text](./public/screenshot/con.png)<br>
     b. WelcomeController<br>
@@ -122,27 +122,71 @@
         - Route <br>
         ![alt text](./public/screenshot/r.png)<br>
 ## Resource Controller
-- Create Resource Controller <br>
+- Langkah-langkah Praktikum: <br>
     a. Create Resource Controller by terminal<br>
     ![alt text](./public/screenshot/create.png)<br>
     b. Setelah controller berhasil degenerate, selanjutnya harus dibuatkan route agar dapat terhubung dengan frontend. Tambahkan kode program berikut pada file web.php.
     ```php
     Route::resource('photos', PhotoController::class);
     ```
-    c. alankan cek list route (php artisan route:list) akan dihasilkan route berikut ini.
+    c. jalankan cek list route (php artisan route:list) akan dihasilkan route berikut ini.
     ![alt text](./public/screenshot/rout.png)<br>
     d. Pada route list semua route yang berhubungan untuk crud photo sudah di generate oleh laravel. Jika tidak semua route pada resource controller dibutuhkan dapat dikurangi dengan mengupdate route pada web.php menjadi seperti berikut ini.
     ```php
     Route::resource('photos', PhotoController::class)->only([
-    'index', 'show'
+        'index', 'show'
     ]);
 
     Route::resource('photos', PhotoController::class)->except([
-    'create', 'store', 'update', 'destroy'
+        'create', 'store', 'update', 'destroy'
     ]);
     ```
     Hasil Pengecekan Route <br>
     ![alt text](./public/screenshot/rtt.png)<br>
+# View
+- Langkah-langkah Praktikum:<br>
+    a. Pada direktori app/resources/views, buatlah file hello.blade.php.
+    ![alt text](./public/screenshot/vw.png)<br>
+    b. View tersebut dapat dijalankan melalui Routing, dimana route akan memanggil View sesuai dengan nama file tanpa ‘blade.php’.
+    ```php
+    Route::get('/greeting', function () {
+        return view('hello', ['name' => 'Syahrul Bhudi Ferdiansyah']);
+    });
+    ```
+    c. Hasil <br>
+    ![alt text](./public/screenshot/vw1.png)<br>
+    >dengan mengisi kedua pada fungsi helper view yaitu parameter array, kita dapat passing argument pada view kita yaitu ‘hello.blade.php’, sehingga seperti pada Langkah ini kita dapat mencetak isi dari array tersebut<br>
 
+## View dalam Direktori
+- Langkah-langkah Praktikum:<br>
+    b.<br> ![alt text](./public/screenshot/dr.png)<br>
+    c. Selanjutnya lakukan perubahan pada route.<br>
+    ```php
+    Route::get('/greeting', function () {
+        return view('blog.hello', ['name' => 'Syahrul Bhudi Ferdiansyah']);
+    });
+    ```
+    d. Hasil <br>
+    ![alt text](./public/screenshot/vw1.png)<br>
+    >sama seperti Langkah sebelumnya (hanya query parameter nya di isi dengan value yang berbeda), disini kita berfokus pada view yang disimpan pada folder bertingkat. Pada Laravel, untuk memanggil view “hello” , kita perlu memasukan nama folder seperti “blog.hello”
 
-
+## Menampilkan view dari Controller
+- Langkah-langkah Praktikum: <br>
+    a. Buka WelcomeController.php dan tambahkan fungsi baru yaitu greeting.<br>
+    ![alt text](./public/screenshot/vwc.png)<br>
+    b. Ubah route /greeting dan arahkan ke WelcomeController pada fungsi greeting. <br>
+    ```php
+    Route::get('/greeting', [WelcomeController::class, 'greeting']);
+    ```
+    c. Hasil<br>
+    ![alt text](./public/screenshot/vw1.png)<br>
+    >hasil yang didapatkan akan sama seperti 2 langkah sebelumnya, namun mekanisme di balik layar berbeda. Pada Langkah ini kita memakai controller pada route, tidak seperti 2 langkah sebelumnya dimana kita menggukan method helper “view()”
+## Meneruskan data ke view
+- Langkah-langkah Praktikum:<br>
+    a. Buka WelcomeController.php dan tambahkan ubah fungsi greeting.
+    ![alt text](./public/screenshot/g.png)<br>
+    b. Ubah hello.blade.php agar dapat menampilkan dua parameter.<br>
+    ![alt text](./public/screenshot/g1.png)<br>
+    c. Hasil<br>
+    ![alt text](./public/screenshot/g2.png)
+    >note: disini untuk nama dan occupation saya ganti dengan value asli dari saya. Dengan menggunakan method with, berbeda dengan memasukan nilai dengan array, sebagai alternatif untuk meneruskan array data lengkap ke fungsi view helper, kita dapat menggunakan metode with() untuk menambahkan bagian data individual ke view. Metode with() mengembalikan instance view objek sehingga kita dapat melanjutkan rangkaian metode sebelum mengembalikan tampilan
