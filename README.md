@@ -71,7 +71,7 @@ Langkah-langkah Praktikum:<br>
 # Controller
 - Langkah-langkah Praktikum:<br>
     <br>a. Create Controller by terminal<br>
-    ![alt text](./public/screenshot/con.png)<br>
+    ![alt text](./public/screenshot/controllerr.png)<br>
     b. WelcomeController<br>
     ```php
         <?php
