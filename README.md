@@ -69,8 +69,8 @@
     > ![alt text](./public/screenshot/c.png)<br>Seperti pada kode diatas, bila kita memanggil Url ’/test’, bukan membuka Url tersebut,
     > melainkan kita bisa me-redirect untuk membuka Url dari route name kita seperti diatas
 ## Controller
-- Create Controller
-    <br>a. Create Controller by terminal
+- Create Controller<br>
+    <br>a. Create Controller by terminal<br>
     ![alt text](./public/screenshot/con.png)<br>
     b. WelcomeController<br>
     ```php
@@ -103,27 +103,27 @@
     d. Setelah sebuah controller telah didefinisikan action, kita dapat menambahkan controller tersebut pada route. Ubah route /hello menjadi seperti berikut: <br>
     ![alt text](./public/screenshot/cot.png)<br>
     e. Hasil <br>
-    ![alt text](./public/screenshot/cot2.png)
+    ![alt text](./public/screenshot/cot2.png)<br>
     >dengan menggunakan controller pada Laravel, kita bisa membuat code
     yang kompleks disbanding dengan basic routing. Hal ini dilandasi karna Laravelmenerapkan konsep MVC (Model-View-Controller), dimana kita bisa memisahkan antar logic code (model), tampilan (view), dan penghubung / perantara (controller), sehingga bisa menerapkan kode yang lebih bersih dan mudah di maintenance. Untuk kode Route /hello diatas menerapkan langsung Controller dari WelcomeController yang memiliki function hello() yang mereturn 'Hello World'
 
-    f. Modifikasi hasil pada praktikum poin 2 (Routing) dengan konsep controller. Pindahkan logika eksekusi ke dalam controller dengan nama PageController.
-    ![alt text](./public/screenshot/control.png)
-    ![alt text](./public/screenshot/control1.png)
+    f. Modifikasi hasil pada praktikum poin 2 (Routing) dengan konsep controller. Pindahkan logika eksekusi ke dalam controller dengan nama PageController.<br>
+    ![alt text](./public/screenshot/control.png)<br>
+    ![alt text](./public/screenshot/control1.png)<br>
 
     g. Modifikasi kembali implementasi sebelumnya dengan konsep Single Action Controller.Sehingga untuk hasil akhir yang didapatkan akan ada HomeController,AboutController dan ArticleController. Modifikasi juga route yang digunakan.
     ![alt text](./public/screenshot/cont.png)<br>
         - HomeController<br>
         ![alt text](./public/screenshot/home.png)<br>
-        - AboutController
+        - AboutController<br>
         ![alt text](./public/screenshot/abt.png)<br>
-        - ArticleController
+        - ArticleController<br>
         ![alt text](./public/screenshot/abt.png)<br>
         - Route <br>
         ![alt text](./public/screenshot/r.png)<br>
 ## Resource Controller
 - Create Resource Controller <br>
-    a. Create Resource Controller by terminal
+    a. Create Resource Controller by terminal<br>
     ![alt text](./public/screenshot/create.png)<br>
     b. Setelah controller berhasil degenerate, selanjutnya harus dibuatkan route agar dapat terhubung dengan frontend. Tambahkan kode program berikut pada file web.php.
     ```php
