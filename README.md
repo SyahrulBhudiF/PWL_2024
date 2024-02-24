@@ -57,15 +57,92 @@
     Hasil<br>
     ![alt text](./public/screenshot/john1.png)
     > Hasil dari pengubahan tersebut adalah nilai default dari parameter name berubah menjadi John. Jadi ketika url parameter dikosongi maka callback akan langsung meneruskan $name sebagai john
--   Route Name<br> 
+-   Route Name<br>
     ![alt text](./public/screenshot/nama.png)<br>
     Hasil
-    ![alt text](./public/screenshot/nama2.png)
+    ![alt text](./public/screenshot/n.png)
     > Langkah diatas, merupakan code yang kurang benar pada laravel untuk
     > memakai route name, karna route name di pakai untuk mensederhanakan url yang dikira
     > Panjang untuk digunakan redirect atau untuk dipakai di fungsi route lain, berikut merupakan
     > contoh kode yang benar untuk memakai route name:<br>
     > ![alt text](./public/screenshot/cor.png)<br>
-    > ![alt text](./public/screenshot/cor1.png)<br>Seperti pada kode diatas, bila kita memanggil Url ’/test’, bukan membuka Url tersebut,
+    > ![alt text](./public/screenshot/c.png)<br>Seperti pada kode diatas, bila kita memanggil Url ’/test’, bukan membuka Url tersebut,
     > melainkan kita bisa me-redirect untuk membuka Url dari route name kita seperti diatas
+## Controller
+- Create Controller
+    <br>a. Create Controller by terminal
+    ![alt text](./public/screenshot/con.png)<br>
+    b. WelcomeController<br>
+    ```php
+        <?php
+
+        namespace App\Http\Controllers;
+
+        use Illuminate\Http\Request;
+
+        class WelcomeController extends Controller
+        {
+            //
+        }
+    ```
+    c. Untuk mendefinisikan action, silahkan tambahkan function dengan  access public. Sehingga controller di atas menjadi sebagai berikut:<br>
+    ```php
+        <?php
+
+        namespace App\Http\Controllers;
+
+        use Illuminate\Http\Request;
+
+        class WelcomeController extends Controller
+        {
+            public function hello(){
+                return 'Hello World';
+            }
+        }
+    ```
+    d. Setelah sebuah controller telah didefinisikan action, kita dapat menambahkan controller tersebut pada route. Ubah route /hello menjadi seperti berikut: <br>
+    ![alt text](./public/screenshot/cot.png)<br>
+    e. Hasil <br>
+    ![alt text](./public/screenshot/cot2.png)
+    >dengan menggunakan controller pada Laravel, kita bisa membuat code
+    yang kompleks disbanding dengan basic routing. Hal ini dilandasi karna Laravelmenerapkan konsep MVC (Model-View-Controller), dimana kita bisa memisahkan antar logic code (model), tampilan (view), dan penghubung / perantara (controller), sehingga bisa menerapkan kode yang lebih bersih dan mudah di maintenance. Untuk kode Route /hello diatas menerapkan langsung Controller dari WelcomeController yang memiliki function hello() yang mereturn 'Hello World'
+
+    f. Modifikasi hasil pada praktikum poin 2 (Routing) dengan konsep controller. Pindahkan logika eksekusi ke dalam controller dengan nama PageController.
+    ![alt text](./public/screenshot/control.png)
+    ![alt text](./public/screenshot/control1.png)
+
+    g. Modifikasi kembali implementasi sebelumnya dengan konsep Single Action Controller.Sehingga untuk hasil akhir yang didapatkan akan ada HomeController,AboutController dan ArticleController. Modifikasi juga route yang digunakan.
+    ![alt text](./public/screenshot/cont.png)<br>
+        - HomeController<br>
+        ![alt text](./public/screenshot/home.png)<br>
+        - AboutController
+        ![alt text](./public/screenshot/abt.png)<br>
+        - ArticleController
+        ![alt text](./public/screenshot/abt.png)<br>
+        - Route <br>
+        ![alt text](./public/screenshot/r.png)<br>
+## Resource Controller
+- Create Resource Controller <br>
+    a. Create Resource Controller by terminal
+    ![alt text](./public/screenshot/create.png)<br>
+    b. Setelah controller berhasil degenerate, selanjutnya harus dibuatkan route agar dapat terhubung dengan frontend. Tambahkan kode program berikut pada file web.php.
+    ```php
+    Route::resource('photos', PhotoController::class);
+    ```
+    c. alankan cek list route (php artisan route:list) akan dihasilkan route berikut ini.
+    ![alt text](./public/screenshot/rout.png)<br>
+    d. Pada route list semua route yang berhubungan untuk crud photo sudah di generate oleh laravel. Jika tidak semua route pada resource controller dibutuhkan dapat dikurangi dengan mengupdate route pada web.php menjadi seperti berikut ini.
+    ```php
+    Route::resource('photos', PhotoController::class)->only([
+    'index', 'show'
+    ]);
+
+    Route::resource('photos', PhotoController::class)->except([
+    'create', 'store', 'update', 'destroy'
+    ]);
+    ```
+    Hasil Pengecekan Route <br>
+    ![alt text](./public/screenshot/rtt.png)<br>
+
+
 
